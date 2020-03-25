@@ -1,31 +1,27 @@
 ﻿using System;
 
-namespace _100to105
+namespace Alchemist
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int X = int.Parse(Console.ReadLine());
-            if (X / 100 >= CalcMin(X))
+            int N = int.Parse(Console.ReadLine());
+            int[] v = new int[N];
+            String input = Console.ReadLine();
+            String[] spl = input.Split(" ");
+            for(int i = 0; i <N; i++)
             {
-                Console.WriteLine(1);
+                v[i] = int.Parse(spl[i]);
             }
-            else
+
+            Array.Sort(v);
+            double final = v[0];
+            for(int i = 1; i < N; i++)
             {
-                Console.WriteLine(0);
+                final = (final + v[i]) / 2;
             }
-        }
-        static int CalcMin(int price)
-        {
-            int shimo2 = price % 100;
-            int min = 0;
-            for (int i = 5; i > 0; i--)
-            {
-                min += shimo2 / i;
-                shimo2 = shimo2 % i;
-            }
-            return min;
+            Console.WriteLine(final);
         }
     }
 }
